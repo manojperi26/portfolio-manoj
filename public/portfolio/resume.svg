@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1100" width="100%" height="100%">
+  <defs>
+    <style>
+      .name { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 23px; font-weight: bold; fill: #000000; }
+      .contact-label { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 11.5px; fill: #111111; }
+      .contact-link { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 11.5px; fill: #1a0dab; text-decoration: underline; }
+      .sec-title { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 12.5px; font-weight: bold; fill: #000000; letter-spacing: 0.5px; }
+      .line { stroke: #000000; stroke-width: 0.8; }
+      .body-bold { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 10.5px; font-weight: bold; fill: #000000; }
+      .body-regular { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 10px; fill: #111111; }
+      .body-italic { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 10px; font-style: italic; fill: #222222; }
+      .date-text { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 10px; font-style: italic; fill: #111111; text-anchor: end; }
+      .bullet { font-family: 'Times New Roman', Times, Georgia, serif; font-size: 9.5px; fill: #111111; }
+    </style>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="850" height="1100" fill="#ffffff" />
+
+  <!-- HEADER -->
+  <g transform="translate(50, 45)">
+    <text x="0" y="0" class="name">Peri Naga Venkata Sai Manoj</text>
+    
+    <text x="0" y="18" class="contact-label">LinkedIn: <tspan class="contact-link">www.linkedin.com/in/manojperi26</tspan></text>
+    <text x="0" y="32" class="contact-label">Github: <tspan class="contact-link">https://github.com/manojperi26/</tspan></text>
+    
+    <text x="750" y="18" class="contact-label" text-anchor="end">Email: <tspan class="contact-link">manojperi26@gmail.com</tspan></text>
+    <text x="750" y="32" class="contact-label" text-anchor="end">Mobile: +91 8885772647</text>
+  </g>
+
+  <!-- SKILLS SECTION -->
+  <g transform="translate(50, 102)">
+    <text x="0" y="0" class="sec-title">SKILLS</text>
+    <line x1="0" y1="4" x2="750" y2="4" class="line" />
+
+    <text x="0" y="18" class="body-regular"><tspan class="body-bold">Languages:</tspan> Python, C++, Java, SQL</text>
+    <text x="0" y="31" class="body-regular"><tspan class="body-bold">Frameworks:</tspan> PyTorch, TensorFlow, Keras, scikit-learn, LangChain, Flask, FastAPI, OpenCV</text>
+    <text x="0" y="44" class="body-regular"><tspan class="body-bold">Tools/Platforms:</tspan> MySQL, Git, Github, VS Code, PowerBI</text>
+    <text x="0" y="57" class="body-regular"><tspan class="body-bold">Core Concepts:</tspan> Data Structures &amp; Algorithms, OOPs, Operating Systems, Machine Learning, Deep Learning, RAG, NLP</text>
+    <text x="0" y="70" class="body-regular"><tspan class="body-bold">Soft Skills:</tspan> Problem-Solving, Teamwork, Communication, Adaptability</text>
+  </g>
+
+  <!-- EXPERIENCE SECTION -->
+  <g transform="translate(50, 196)">
+    <text x="0" y="0" class="sec-title">EXPERIENCE</text>
+    <line x1="0" y1="4" x2="750" y2="4" class="line" />
+
+    <text x="0" y="18" class="body-bold"><tspan class="contact-link" style="text-decoration: underline;">Software Intern | Endeavour Technologies (Offer Letter)</tspan></text>
+    <text x="750" y="18" class="date-text">Jun'26 - Aug'26</text>
+
+    <text x="12" y="31" class="bullet">• Researched and preprocessed data for ML model development, contributing to model design decisions.</text>
+    <text x="12" y="44" class="bullet">• Trained, evaluated, and debugged machine learning models; documented technical processes and issue resolutions.</text>
+    <text x="12" y="57" class="bullet">• Collaborated with the team to deliver AI-driven solutions end-to-end.</text>
+  </g>
+
+  <!-- PROJECTS SECTION -->
+  <g transform="translate(50, 277)">
+    <text x="0" y="0" class="sec-title">PROJECTS</text>
+    <line x1="0" y1="4" x2="750" y2="4" class="line" />
+
+    <!-- Project 1 -->
+    <text x="0" y="18" class="body-bold"><tspan class="contact-link" style="text-decoration: underline;">Data Whisperer</tspan> | Python, Streamlit, LangChain, Groq (Llama 3.3 70B)</text>
+    <text x="750" y="18" class="date-text">Aug'26</text>
+    <text x="12" y="31" class="bullet">• Built a Streamlit-based CSV data-analysis agent using LangChain's ReAct framework, enabling natural-language querying with autonomous</text>
+    <text x="20" y="43" class="bullet">multi-step reasoning.</text>
+    <text x="12" y="56" class="bullet">• Integrated Groq-hosted Llama 3.3 70B to interpret user queries and auto-generate charts/insights in real time, achieving 91% query</text>
+    <text x="20" y="68" class="bullet">interpretation accuracy across test datasets, deployed live via ngrok.</text>
+    <text x="12" y="81" class="bullet">• Debugged agent iteration-limit failures and chart-rendering errors, improving end-to-end query reliability for consistent output.</text>
+
+    <!-- Project 2 -->
+    <text x="0" y="103" class="body-bold"><tspan class="contact-link" style="text-decoration: underline;">Alzheimer's Detection System</tspan> | Python, TensorFlow/Keras, VGG16, Streamlit</text>
+    <text x="750" y="103" class="date-text">Mar'26</text>
+    <text x="12" y="116" class="bullet">• Engineered a 4-class Alzheimer's MRI classifier for automated early-stage disease detection, leveraging VGG16 transfer learning with a</text>
+    <text x="20" y="128" class="bullet">two-phase training strategy.</text>
+    <text x="12" y="141" class="bullet">• Preprocessed and augmented medical imaging data across all four disease stages, then deployed the model as an interactive Streamlit web</text>
+    <text x="20" y="153" class="bullet">app for real-time predictions.</text>
+    <text x="12" y="166" class="bullet">• Achieved 97.89% classification accuracy across all four disease stages, validating the model's reliability for early-stage diagnosis support.</text>
+
+    <!-- Project 3 -->
+    <text x="0" y="188" class="body-bold"><tspan class="contact-link" style="text-decoration: underline;">Walmart Sales Forecasting</tspan> | Python, Random Forest, Scikit-learn</text>
+    <text x="750" y="188" class="date-text">Feb'26</text>
+    <text x="12" y="201" class="bullet">• Investigated 6,435 retail records across 45 stores to uncover seasonal trends and economic factors driving weekly sales.</text>
+    <text x="12" y="214" class="bullet">• Constructed a Random Forest regression model to generate 12-week sales forecasts, enabling data-driven inventory planning.</text>
+    <text x="12" y="227" class="bullet">• Delivered 93% prediction accuracy (R² = 0.93) on weekly sales forecasts, supporting reliable demand planning decisions.</text>
+  </g>
+
+  <!-- TRAINING SECTION -->
+  <g transform="translate(50, 528)">
+    <text x="0" y="0" class="sec-title">TRAINING</text>
+    <line x1="0" y1="4" x2="750" y2="4" class="line" />
+
+    <text x="0" y="18" class="body-bold">Professional Certification in AI &amp; Data Science</text>
+    <text x="750" y="18" class="date-text">Feb'25 – Jun'26</text>
+    <text x="0" y="31" class="body-italic">Intellipaat (in collaboration with IIT Indore)</text>
+
+    <text x="12" y="44" class="bullet">• Established a foundation in statistics, EDA, and applied ML (XGBoost, SHAP, time-series forecasting) using AI-assisted coding, SQL,</text>
+    <text x="20" y="56" class="bullet">Excel, and modern Python.</text>
+    <text x="12" y="69" class="bullet">• Implemented Deep Learning architectures with PyTorch and Transformers, and applied Generative AI, LLM, and RAG concepts to hands-on</text>
+    <text x="20" y="81" class="bullet">exercises.</text>
+    <text x="12" y="94" class="bullet">• Executed real-world industry projects, deploying ML models via cloud MLOps and performing data analysis with Power BI and Copilot.</text>
+  </g>
+
+  <!-- COURSES & CERTIFICATES -->
+  <g transform="translate(50, 650)">
+    <text x="0" y="0" class="sec-title">COURSES &amp; CERTIFICATES</text>
+    <line x1="0" y1="4" x2="750" y2="4" class="line" />
+
+    <text x="0" y="18" class="body-regular"><tspan class="body-bold">AI Engineer Launchpad: Mastering LLMs and Agentic AI</tspan> | <tspan class="contact-link">Lovely Professional University</tspan></text>
+    <text x="750" y="18" class="date-text">Aug'26</text>
+
+    <text x="0" y="32" class="body-regular"><tspan class="body-bold">DRISHTI CPS — AI &amp; Data Science Certification, IIT Indore</tspan> | <tspan class="contact-link">Intellipaat</tspan></text>
+    <text x="750" y="32" class="date-text">Jun'26</text>
+
+    <text x="0" y="46" class="body-regular"><tspan class="body-bold">Python</tspan> | <tspan class="contact-link">Intellipaat</tspan></text>
+    <text x="750" y="46" class="date-text">Mar'26</text>
+
+    <text x="0" y="60" class="body-regular"><tspan class="body-bold">SQL</tspan> | <tspan class="contact-link">Intellipaat</tspan></text>
+    <text x="750" y="60" class="date-text">Sep'25</text>
+  </g>
+
+  <!-- EDUCATION SECTION -->
+  <g transform="translate(50, 736)">
+    <text x="0" y="0" class="sec-title">EDUCATION</text>
+    <line x1="0" y1="4" x2="750" y2="4" class="line" />
+
+    <!-- Degree 1 -->
+    <text x="0" y="18" class="body-bold">Lovely Professional University</text>
+    <text x="750" y="18" class="date-text" style="font-style: normal;">Phagwara, Punjab</text>
+    <text x="0" y="31" class="body-regular">Bachelor of Technology - Computer Science and Engineering</text>
+    <text x="750" y="31" class="date-text">Aug'24 – Present</text>
+
+    <!-- Degree 2 -->
+    <text x="0" y="48" class="body-bold">Matrusri Junior College</text>
+    <text x="750" y="48" class="date-text" style="font-style: normal;">Rajahmundry, AP</text>
+    <text x="0" y="61" class="body-regular">Intermediate – MPC(Percentage: 86.8%)</text>
+    <text x="750" y="61" class="date-text">Mar'22 – May'24</text>
+
+    <!-- Degree 3 -->
+    <text x="0" y="78" class="body-bold">Sri Chaitanya EM Techno School</text>
+    <text x="750" y="78" class="date-text" style="font-style: normal;">Visakhapatnam, AP</text>
+    <text x="0" y="91" class="body-regular">Matriculation (Percentage: 94.7%)</text>
+    <text x="750" y="91" class="date-text">Mar'21 – May'22</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="certBg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="50%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="320" rx="12" fill="url(#certBg4)" />
+  
+  <!-- Outer border -->
+  <rect x="16" y="16" width="448" height="288" rx="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+  <rect x="22" y="22" width="436" height="276" rx="6" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+
+  <!-- Database Cylinder Emblem -->
+  <circle cx="240" cy="68" r="28" fill="rgba(16,185,129,0.15)" stroke="#10B981" stroke-width="2" />
+  <ellipse cx="240" cy="58" rx="14" ry="4" fill="#10B981" />
+  <path d="M 226 58 L 226 68 C 226 71 254 71 254 68 L 254 58" fill="none" stroke="#10B981" stroke-width="2" />
+  <path d="M 226 68 L 226 78 C 226 81 254 81 254 78 L 254 68" fill="none" stroke="#10B981" stroke-width="2" />
+
+  <!-- Issuer -->
+  <text x="240" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#6EE7B7" text-anchor="middle" letter-spacing="1">INTELLIPAAT</text>
+  
+  <!-- Title -->
+  <text x="240" y="148" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SQL CERTIFICATION</text>
+  <text x="240" y="170" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#94A3B8" text-anchor="middle">Relational Database Queries, Joins & Optimization</text>
+
+  <!-- Divider line -->
+  <line x1="140" y1="192" x2="340" y2="192" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+
+  <!-- Recipient / Date -->
+  <text x="240" y="220" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#F8FAFC" text-anchor="middle">Peri Naga Venkata Sai Manoj</text>
+  <text x="240" y="242" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Issued: September 2025 • Verified Credential</text>
+
+  <!-- Bottom Verification Badge -->
+  <g transform="translate(190, 258)">
+    <rect width="100" height="22" rx="11" fill="rgba(16,185,129,0.2)" stroke="#10B981" stroke-width="1" />
+    <text x="50" y="15" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#6EE7B7" text-anchor="middle">✓ VERIFIED</text>
+  </g>
+</svg>

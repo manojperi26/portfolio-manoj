@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="certBg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="320" rx="12" fill="url(#certBg3)" />
+  
+  <!-- Outer border -->
+  <rect x="16" y="16" width="448" height="288" rx="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+  <rect x="22" y="22" width="436" height="276" rx="6" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+
+  <!-- Python Dual-Color Icon Emblem -->
+  <circle cx="240" cy="68" r="28" fill="rgba(56,189,248,0.15)" stroke="#38BDF8" stroke-width="2" />
+  <!-- Python logo abstraction -->
+  <path d="M 230 58 C 230 54 238 54 242 54 L 246 54 C 250 54 250 58 250 62 L 250 68 L 238 68 C 232 68 230 72 230 76 Z" fill="#38BDF8" />
+  <circle cx="236" cy="60" r="1.5" fill="#FFFFFF" />
+  <path d="M 250 78 C 250 82 242 82 238 82 L 234 82 C 230 82 230 78 230 74 L 230 68 L 242 68 C 248 68 250 64 250 60 Z" fill="#FBBF24" />
+  <circle cx="244" cy="76" r="1.5" fill="#FFFFFF" />
+
+  <!-- Issuer -->
+  <text x="240" y="122" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38BDF8" text-anchor="middle" letter-spacing="1">INTELLIPAAT</text>
+  
+  <!-- Title -->
+  <text x="240" y="148" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">PYTHON CERTIFICATION</text>
+  <text x="240" y="170" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#94A3B8" text-anchor="middle">Advanced Programming, OOPs & Data Structures</text>
+
+  <!-- Divider line -->
+  <line x1="140" y1="192" x2="340" y2="192" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+
+  <!-- Recipient / Date -->
+  <text x="240" y="220" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#F8FAFC" text-anchor="middle">Peri Naga Venkata Sai Manoj</text>
+  <text x="240" y="242" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8" text-anchor="middle">Issued: March 2026 • Verified Credential</text>
+
+  <!-- Bottom Verification Badge -->
+  <g transform="translate(190, 258)">
+    <rect width="100" height="22" rx="11" fill="rgba(56,189,248,0.2)" stroke="#38BDF8" stroke-width="1" />
+    <text x="50" y="15" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#BAE6FD" text-anchor="middle">✓ VERIFIED</text>
+  </g>
+</svg>
