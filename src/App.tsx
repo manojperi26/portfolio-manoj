@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { EmailModal } from './components/EmailModal';
 import { ScrollProgressWidget } from './components/ScrollProgressWidget';
+import { Chatbot } from './components/Chatbot';
 
 function AppContent() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
@@ -47,6 +48,12 @@ function AppContent() {
 
       {/* Floating Scroll Progress & Back-to-Top Widget */}
       <ScrollProgressWidget />
+
+      {/* Domain-Specific AI Chatbot: Manoj's Technical AI Representative */}
+      <Chatbot
+        onOpenContact={() => setContactModalOpen(true)}
+        onOpenEmail={() => setEmailModalOpen(true)}
+      />
 
       {/* Contact Modal */}
       <ContactModal
