@@ -276,6 +276,7 @@ export const INTERNSHIPS_DATA: Internship[] = [
     company: 'Endeavour ERP Solutions India Pvt. Ltd., Hyderabad',
     period: 'June 2026 - August 2026 (2 months)',
     image: '/portfolio/endeavour.svg',
+    verifyUrl: 'https://drive.google.com/file/d/11TyAGEiwM8-juAEHwrHZrUEprLz5wCBq/view?usp=sharing',
     description: 'Completed an AI internship focused on software development, working on real-world tasks and gaining hands-on industry experience.',
     skills: ['AI Development', 'Software Development', 'Python', 'Real-world Tasks', 'Industry Experience']
   },
@@ -285,6 +286,7 @@ export const INTERNSHIPS_DATA: Internship[] = [
     company: 'Intellipaat Software Solutions Pvt. Ltd.',
     period: 'November 2025 - April 2026 (6 months)',
     image: '/portfolio/intellipaat.svg',
+    verifyUrl: 'https://drive.google.com/file/d/1E41t1Y3oD0CCIJoqAJywq6B422zUvEz3/view?usp=sharing',
     description: 'Worked as part of the DRISHTI CPS hands-on internship program with IIT Indore. Built ML/DL-based text and image AI applications in Python, covering data preprocessing, model training and evaluation, SQL, neural networks, and GenAI/prompting with GPT.',
     skills: ['Machine Learning', 'Deep Learning', 'Python', 'GenAI & Prompting (GPT)', 'Neural Networks', 'SQL', 'Data Preprocessing', 'Model Evaluation']
   }

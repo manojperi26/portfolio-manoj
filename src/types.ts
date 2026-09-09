@@ -52,6 +52,7 @@ export interface Internship {
   image: string;
   description: string;
   skills: string[];
+  verifyUrl?: string;
 }
 
 export interface UniversityTab {

@@ -79,15 +79,26 @@ export const InternshipsSection: React.FC = () => {
                     </div>
 
                     {/* Details */}
-                    <div className="flex-1">
-                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
+                    <div className="flex-1 w-full min-w-0">
+                      <div className="flex items-center justify-between gap-3 mb-1">
                         <h3 className="font-serif font-bold text-xl text-[#0F172A] dark:text-[#F1F5F9] group-hover:text-[#E05638] transition-colors duration-150 inline-block relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#E05638] group-hover:after:w-full after:transition-all after:duration-150 after:ease-out">
                           {intern.role}
                         </h3>
+                        {intern.verifyUrl && (
+                          <a
+                            href={intern.verifyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Verify ${intern.company} internship document`}
+                            className="font-mono text-xs font-bold text-[#E05638] hover:text-[#C8482E] dark:hover:text-[#F07054] tracking-wider hover:underline transition-colors duration-150 shrink-0 inline-flex items-center"
+                          >
+                            [VERIFY ↗]
+                          </a>
+                        )}
                       </div>
 
                       <div className="font-mono text-xs text-[#E05638] font-bold mb-3">
-                        {intern.company} &bull; APPOINTMENT RECORD
+                        {intern.company}
                       </div>
 
                       <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 font-sans">
