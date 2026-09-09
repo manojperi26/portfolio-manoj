@@ -114,7 +114,7 @@ export const PROJECTS_DATA: Project[] = [
     description: "Built a Streamlit-based CSV data-analysis agent using LangChain's ReAct framework, enabling natural-language querying with autonomous multi-step reasoning. Integrated Groq-hosted Llama 3.3 70B to interpret user queries and auto-generate charts/insights in real time, achieving 91% query interpretation accuracy across test datasets, deployed live via ngrok. Debugged agent iteration-limit failures and chart-rendering errors, improving end-to-end query reliability for consistent output.",
     image: '/portfolio/data-whisperer-banner.png',
     tags: ['Python', 'Streamlit', 'LangChain', 'Groq (Llama 3.3 70B)', 'ReAct Framework', 'ngrok'],
-    githubUrl: 'https://github.com/manojperi26/data-whisper',
+    githubUrl: 'https://github.com/manojperi26/data-whisper-manoj',
     featured: true,
     deepDive: {
       architectureTagline: 'Conversational CSV Analysis Agent with Autonomous Multi-Step Reasoning',
