@@ -57,7 +57,7 @@ export const ScrollProgressWidget: React.FC = () => {
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, x: -10 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, x: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, x: -10 }}
-            className="flex items-center gap-2 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xs px-3 py-1.5 border border-[#E2E8F0] dark:border-[#1E293B] font-mono text-xs"
+            className="flex items-center gap-2 h-9 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xs px-3 border border-[#E2E8F0] dark:border-[#1E293B] font-mono text-xs rounded-none shadow-xs"
           >
             {/* Circular Progress Ring with Terracotta Accent */}
             <div className="relative w-5 h-5 flex items-center justify-center">

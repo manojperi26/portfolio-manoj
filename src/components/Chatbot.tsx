@@ -11,9 +11,10 @@ import {
   Sparkles, 
   ExternalLink,
   CheckCircle2,
-  AlertCircle
+  AlertCircle,
+  GripVertical
 } from 'lucide-react';
-import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion, useDragControls } from 'motion/react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface Message {
@@ -47,6 +48,10 @@ How can I assist your review today?`;
 
 export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) => {
   const shouldReduceMotion = useReducedMotion();
+  const windowDragControls = useDragControls();
+  const isDraggingPillRef = useRef(false);
+  const [dragBounds, setDragBounds] = useState({ top: -600, left: -800, right: 0, bottom: 0 });
+
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -63,6 +68,21 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  // Compute screen drag constraints dynamically
+  useEffect(() => {
+    const updateBounds = () => {
+      setDragBounds({
+        top: -(window.innerHeight - 110),
+        left: -(window.innerWidth - 240),
+        right: 0,
+        bottom: 0,
+      });
+    };
+    updateBounds();
+    window.addEventListener('resize', updateBounds);
+    return () => window.removeEventListener('resize', updateBounds);
+  }, []);
 
   // Auto-scroll to bottom of conversation
   const scrollToBottom = () => {
@@ -389,71 +409,119 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
 
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
-      {/* Floating Launcher Button - Styled identically to [JARVIS] MY AI → */}
+      {/* Floating Launcher Bar - Draggable and Movable Rectangle matching Intro size */}
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
-            id="chatbot-launcher-button"
+          <motion.div
+            id="chatbot-launcher-bar"
+            drag
+            dragMomentum={false}
+            dragElastic={0.12}
+            dragConstraints={dragBounds}
+            onDragStart={() => {
+              isDraggingPillRef.current = true;
+            }}
+            onDragEnd={() => {
+              setTimeout(() => {
+                isDraggingPillRef.current = false;
+              }, 120);
+            }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            whileDrag={{ scale: 1.04, cursor: 'grabbing' }}
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 15 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 15 }}
             transition={{ duration: 0.2 }}
-            onClick={() => setIsOpen(true)}
-            aria-label="Open JARVIS AI"
-            className="group relative flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#D8583B] hover:bg-[#C8482E] active:bg-[#B53B22] text-white shadow-xl hover:shadow-2xl transition-all duration-150 rounded-none border border-[#B53B22]/70 focus:outline-none focus:ring-2 focus:ring-[#D8583B] focus:ring-offset-2"
+            onClick={() => {
+              if (isDraggingPillRef.current) return;
+              setIsOpen(true);
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label="Open JARVIS AI - Drag to move anywhere"
+            className="group cursor-grab active:cursor-grabbing select-none flex items-center gap-2.5 px-3 h-9 bg-gradient-to-r from-[#D8583B] to-[#C8482E] hover:from-[#E05638] hover:to-[#D8583B] text-white shadow-lg shadow-[#D8583B]/20 rounded-none border border-[#B53B22]/80 focus:outline-none focus:ring-2 focus:ring-[#D8583B] focus:ring-offset-2 backdrop-blur-md"
           >
-            <span className="font-mono text-sm sm:text-base font-bold tracking-widest uppercase select-none flex items-center gap-2.5 sm:gap-3 text-white">
-              <span>[JARVIS]</span>
-              <span>MY AI</span>
-              <span className="inline-block transition-transform duration-200 group-hover:translate-x-1.5 text-lg font-bold leading-none">
-                →
-              </span>
+            {/* Drag Grip Handle */}
+            <div 
+              className="flex items-center text-white/70 group-hover:text-white transition-colors"
+              title="Drag to reposition anywhere"
+            >
+              <GripVertical className="w-3.5 h-3.5" />
+            </div>
+
+            {/* Pulsing online indicator */}
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
             </span>
-          </motion.button>
+
+            {/* Monospace Branding */}
+            <div className="flex items-center gap-1.5 font-mono text-xs font-bold tracking-wider uppercase text-white">
+              <span className="px-1.5 py-0.5 bg-white/20 rounded-none text-[10px] tracking-wide">JARVIS</span>
+              <span className="text-white">MY AI</span>
+            </div>
+
+            {/* Arrow */}
+            <span className="text-xs text-white font-bold transition-transform duration-200 group-hover:translate-x-0.5 leading-none">
+              →
+            </span>
+          </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating Chat Window */}
+      {/* Floating Chat Window - Movable by Header */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             id="chatbot-window"
             ref={chatContainerRef}
+            drag
+            dragListener={false}
+            dragControls={windowDragControls}
+            dragMomentum={false}
+            dragElastic={0.1}
+            dragConstraints={dragBounds}
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 20 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-            className="w-[calc(100vw-2.5rem)] sm:w-[420px] h-[580px] max-h-[85vh] bg-[#F8F9FA] dark:bg-[#0B0F17] text-[#0F172A] dark:text-[#F1F5F9] border border-[#E2E8F0] dark:border-[#1E293B] shadow-2xl flex flex-col rounded-none overflow-hidden"
+            className="w-[calc(100vw-2.5rem)] sm:w-[430px] h-[590px] max-h-[85vh] bg-[#F8F9FA] dark:bg-[#0B0F17] text-[#0F172A] dark:text-[#F1F5F9] border border-[#E2E8F0] dark:border-[#1E293B] shadow-2xl flex flex-col rounded-none overflow-hidden"
           >
-            {/* Header */}
-            <div className="px-4 py-3 bg-[#D8583B] text-white flex items-center justify-between shrink-0">
+            {/* Header - Grabbable to Drag Window */}
+            <div 
+              onPointerDown={(e) => windowDragControls.start(e)}
+              className="cursor-grab active:cursor-grabbing px-4 py-3 bg-gradient-to-r from-[#D8583B] to-[#C8482E] text-white flex items-center justify-between shrink-0 select-none"
+            >
               <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 bg-white/15 border border-white/30 flex items-center justify-center text-white rounded-none">
+                <div className="w-7 h-7 bg-white/15 border border-white/30 flex items-center justify-center text-white rounded-none shrink-0">
                   <Bot className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold tracking-wider uppercase text-white">
-                      [JARVIS] MY AI
+                    <span className="font-mono text-xs font-bold tracking-wider uppercase text-white px-1.5 py-0.5 bg-white/20 rounded-none">
+                      JARVIS AI
                     </span>
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
                     </span>
                   </div>
-                  <div className="text-[10px] font-mono text-white/80">
-                    Manoj's Technical AI Representative
+                  <div className="text-[10px] font-mono text-white/80 flex items-center gap-1.5 mt-0.5">
+                    <span>Manoj's Technical AI</span>
+                    <span className="text-white/50">•</span>
+                    <span className="text-[9px] text-white/70">drag header to move</span>
                   </div>
                 </div>
               </div>
 
               {/* Header Action Buttons */}
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1" onPointerDown={(e) => e.stopPropagation()}>
                 <button
                   onClick={handleClearChat}
                   title="Reset conversation"
                   aria-label="Reset conversation"
-                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                  className="w-7 h-7 bg-white/10 hover:bg-white/20 text-white/85 hover:text-white flex items-center justify-center transition-colors rounded-none"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
@@ -461,7 +529,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
                   onClick={() => setIsOpen(false)}
                   title="Minimize chatbot"
                   aria-label="Minimize chatbot"
-                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                  className="w-7 h-7 bg-white/10 hover:bg-white/20 text-white/85 hover:text-white flex items-center justify-center transition-colors rounded-none"
                 >
                   <Minimize2 className="w-3.5 h-3.5" />
                 </button>
@@ -469,7 +537,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
                   onClick={() => setIsOpen(false)}
                   title="Close chatbot"
                   aria-label="Close chatbot"
-                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                  className="w-7 h-7 bg-white/10 hover:bg-white/20 text-white/85 hover:text-white flex items-center justify-center transition-colors rounded-none"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -477,7 +545,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
             </div>
 
             {/* Quick Prompt Chips (Top Strip) */}
-            <div className="px-3 py-2 bg-neutral-100/70 dark:bg-[#121824] border-b border-[#E2E8F0] dark:border-[#1E293B] flex items-center gap-1.5 overflow-x-auto scrollbar-none text-[11px] shrink-0">
+            <div className="px-3 py-2 bg-neutral-100/80 dark:bg-[#121824] border-b border-[#E2E8F0] dark:border-[#1E293B] flex items-center gap-1.5 overflow-x-auto scrollbar-none text-[11px] shrink-0">
               <span className="text-[#64748B] dark:text-[#94A3B8] shrink-0 font-mono text-[10px] flex items-center gap-1">
                 <Sparkles className="w-3 h-3 text-[#D8583B]" /> Quick:
               </span>
@@ -486,7 +554,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
                   key={i}
                   onClick={() => handleSendMessage(chip)}
                   disabled={isLoading}
-                  className="whitespace-nowrap px-2.5 py-1 bg-white dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#334155] hover:border-[#D8583B] text-[#334155] dark:text-[#CBD5E1] hover:text-[#D8583B] dark:hover:text-[#D8583B] rounded-none text-[11px] font-mono transition-all disabled:opacity-50"
+                  className="whitespace-nowrap px-2.5 py-1 bg-white dark:bg-[#1E293B] border border-[#CBD5E1] dark:border-[#334155] hover:border-[#D8583B] text-[#334155] dark:text-[#CBD5E1] hover:text-[#D8583B] dark:hover:text-[#D8583B] rounded-none text-[11px] font-mono transition-all disabled:opacity-50 shadow-2xs"
                 >
                   {chip}
                 </button>
@@ -561,7 +629,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
 
               {/* Typing / Streaming indicator */}
               {isLoading && (
-                <div className="flex items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8] p-2 bg-white/70 dark:bg-[#151D2A]/70 border border-[#E2E8F0] dark:border-[#1E293B] rounded-none max-w-[240px]">
+                <div className="flex items-center gap-2 text-xs text-[#64748B] dark:text-[#94A3B8] p-2 bg-white/70 dark:bg-[#151D2A]/70 border border-[#E2E8F0] dark:border-[#1E293B] rounded-none max-w-[240px] px-3">
                   <div className="flex space-x-1">
                     <div className="w-1.5 h-1.5 bg-[#D8583B] rounded-full animate-bounce [animation-delay:-0.3s]" />
                     <div className="w-1.5 h-1.5 bg-[#D8583B] rounded-full animate-bounce [animation-delay:-0.15s]" />
@@ -581,32 +649,32 @@ export const Chatbot: React.FC<ChatbotProps> = ({ onOpenContact, onOpenEmail }) 
                   e.preventDefault();
                   handleSendMessage();
                 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 bg-[#F8F9FA] dark:bg-[#151D2A] border border-[#CBD5E1] dark:border-[#1E293B] focus-within:border-[#D8583B] dark:focus-within:border-[#D8583B] px-3 py-1.5 rounded-none transition-colors"
               >
                 <input
                   ref={inputRef}
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask JARVIS about VeriDoc, ML skills, projects, or hiring..."
+                  placeholder="Ask JARVIS about VeriDoc, ML skills, projects..."
                   disabled={isLoading}
-                  className="flex-1 bg-[#F8F9FA] dark:bg-[#151D2A] border border-[#CBD5E1] dark:border-[#1E293B] focus:border-[#D8583B] dark:focus:border-[#D8583B] px-3 py-2 text-xs rounded-none text-[#0F172A] dark:text-white placeholder-[#94A3B8] focus:outline-none transition-colors font-mono"
+                  className="flex-1 bg-transparent text-xs text-[#0F172A] dark:text-white placeholder-[#94A3B8] focus:outline-none font-mono py-1"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
                   aria-label="Send message"
-                  className="p-2 bg-[#D8583B] hover:bg-[#C8482E] disabled:opacity-40 disabled:hover:bg-[#D8583B] text-white rounded-none transition-colors flex items-center justify-center shrink-0"
+                  className="p-1.5 bg-[#D8583B] hover:bg-[#C8482E] disabled:opacity-30 disabled:hover:bg-[#D8583B] text-white rounded-none transition-colors flex items-center justify-center shrink-0 shadow-xs"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>
               </form>
 
               {/* Guardrail Disclaimer */}
-              <div className="mt-1.5 flex items-center justify-between text-[10px] text-[#94A3B8] dark:text-[#64748B] font-mono px-0.5">
+              <div className="mt-1.5 flex items-center justify-between text-[10px] text-[#94A3B8] dark:text-[#64748B] font-mono px-2">
                 <span className="flex items-center gap-1">
                   <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
-                  JARVIS • Domain-restricted AI agent
+                  JARVIS • Drag header to move
                 </span>
                 <span>Press Enter ↵</span>
               </div>
