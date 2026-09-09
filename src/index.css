@@ -1,18 +1,48 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-serif: "Newsreader", "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-terracotta: #E05638;
+  --color-terracotta-hover: #C94528;
+  --color-chalk: #F8F9FA;
+  --color-graphite: #0B0F17;
+  --color-charcoal: #0F172A;
+  --color-bone: #F1F5F9;
+  --color-wire-light: #E2E8F0;
+  --color-wire-dark: #1E293B;
+}
+
 html {
   scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 html.dark {
   color-scheme: dark;
 }
 
-/* Global Accessible Focus-Visible Indicator (Cyan #22D3EE with outline offset) */
+/* Global Accessible Focus-Visible Indicator (Terracotta #E05638 with outline offset) */
 :focus-visible {
-  outline: 2px solid #22D3EE;
+  outline: 2px solid #E05638;
   outline-offset: 2px;
+}
+
+/* Precision Hairline Dividers and Technical Grid */
+.lab-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+}
+
+.dark .lab-grid {
+  background-image: 
+    linear-gradient(to right, rgba(30, 41, 59, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 41, 59, 0.45) 1px, transparent 1px);
 }
 
 /* Respect user's OS reduced motion preference */

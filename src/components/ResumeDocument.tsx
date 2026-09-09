@@ -12,10 +12,10 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
     >
       {/* HEADER */}
       <header className="mb-5">
-        <h1 className="text-2xl sm:text-3xl md:text-[30px] font-bold text-black tracking-normal mb-1.5">
+        <h1 className="text-2xl sm:text-3xl md:text-[30px] font-bold text-black tracking-normal mb-1.5 font-serif">
           Peri Naga Venkata Sai Manoj
         </h1>
-        <div className="flex flex-wrap justify-between items-start text-[12px] sm:text-[13.5px] leading-snug">
+        <div className="flex flex-wrap justify-between items-start text-[12px] sm:text-[13.5px] leading-snug font-sans">
           <div>
             <div>
               LinkedIn:{' '}
@@ -23,7 +23,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
                 href="https://www.linkedin.com/in/manojperi26/" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-blue-800 underline hover:text-blue-900"
+                className="text-[#E05638] underline hover:text-[#0F172A] font-medium"
               >
                 www.linkedin.com/in/manojperi26
               </a>
@@ -34,7 +34,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
                 href="https://github.com/manojperi26/" 
                 target="_blank" 
                 rel="noreferrer" 
-                className="text-blue-800 underline hover:text-blue-900"
+                className="text-[#E05638] underline hover:text-[#0F172A] font-medium"
               >
                 https://github.com/manojperi26/
               </a>
@@ -47,7 +47,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=manojperi26@gmail.com&su=Inquiry%20from%20Resume%20-%20Manoj%20Peri" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-blue-800 underline hover:text-blue-900 font-medium"
+                className="text-[#E05638] underline hover:text-[#0F172A] font-medium"
                 title="Send email via Gmail / Webmail (opens in new tab)"
               >
                 manojperi26@gmail.com
@@ -80,7 +80,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
         <div>
           <div className="flex justify-between items-baseline font-bold text-[12px] sm:text-[13.5px]">
             <span>
-              <span className="text-blue-800 underline">Software Intern | Endeavour Technologies</span> (Offer Letter)
+              <span className="text-[#E05638] underline hover:text-[#0F172A]">Software Intern | Endeavour Technologies</span> (Offer Letter)
             </span>
             <span className="italic font-normal text-[11.5px] sm:text-[13px]">Jun&apos;26 - Aug&apos;26</span>
           </div>
@@ -102,7 +102,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
           <div>
             <div className="flex justify-between items-baseline font-bold text-[12px] sm:text-[13.5px]">
               <span>
-                <span className="text-blue-800 underline">Data Whisperer</span> | Python, Streamlit, LangChain, Groq (Llama 3.3 70B)
+                <span className="text-[#E05638] underline hover:text-[#0F172A]">Data Whisperer</span> | Python, Streamlit, LangChain, Groq (Llama 3.3 70B)
               </span>
               <span className="italic font-normal text-[11.5px] sm:text-[13px]">Aug&apos;26</span>
             </div>
@@ -117,7 +117,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
           <div>
             <div className="flex justify-between items-baseline font-bold text-[12px] sm:text-[13.5px]">
               <span>
-                <span className="text-blue-800 underline">Alzheimer&apos;s Detection System</span> | Python, TensorFlow/Keras, VGG16, Streamlit
+                <span className="text-[#E05638] underline hover:text-[#0F172A]">Alzheimer&apos;s Detection System</span> | Python, TensorFlow/Keras, VGG16, Streamlit
               </span>
               <span className="italic font-normal text-[11.5px] sm:text-[13px]">Mar&apos;26</span>
             </div>
@@ -132,7 +132,7 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
           <div>
             <div className="flex justify-between items-baseline font-bold text-[12px] sm:text-[13.5px]">
               <span>
-                <span className="text-blue-800 underline">Walmart Sales Forecasting</span> | Python, Random Forest, Scikit-learn
+                <span className="text-[#E05638] underline hover:text-[#0F172A]">Walmart Sales Forecasting</span> | Python, Random Forest, Scikit-learn
               </span>
               <span className="italic font-normal text-[11.5px] sm:text-[13px]">Feb&apos;26</span>
             </div>
@@ -172,25 +172,25 @@ export const ResumeDocument: React.FC<ResumeDocumentProps> = ({ interactive = tr
         <div className="space-y-1.5 text-[11.5px] sm:text-[13px]">
           <div className="flex justify-between items-baseline">
             <span>
-              <span className="font-bold">AI Engineer Launchpad: Mastering LLMs and Agentic AI</span> | <span className="text-blue-800 underline">Lovely Professional University</span>
+              <span className="font-bold">AI Engineer Launchpad: Mastering LLMs and Agentic AI</span> | <span className="text-[#E05638] underline hover:text-[#0F172A]">Lovely Professional University</span>
             </span>
             <span className="italic text-[11px] sm:text-[12.5px]">Aug&apos;26</span>
           </div>
           <div className="flex justify-between items-baseline">
             <span>
-              <span className="font-bold">DRISHTI CPS — AI &amp; Data Science Certification, IIT Indore</span> | <span className="text-blue-800 underline">Intellipaat</span>
+              <span className="font-bold">DRISHTI CPS — AI &amp; Data Science Certification, IIT Indore</span> | <span className="text-[#E05638] underline hover:text-[#0F172A]">Intellipaat</span>
             </span>
             <span className="italic text-[11px] sm:text-[12.5px]">Jun&apos;26</span>
           </div>
           <div className="flex justify-between items-baseline">
             <span>
-              <span className="font-bold">Python</span> | <span className="text-blue-800 underline">Intellipaat</span>
+              <span className="font-bold">Python</span> | <span className="text-[#E05638] underline hover:text-[#0F172A]">Intellipaat</span>
             </span>
             <span className="italic text-[11px] sm:text-[12.5px]">Mar&apos;26</span>
           </div>
           <div className="flex justify-between items-baseline">
             <span>
-              <span className="font-bold">SQL</span> | <span className="text-blue-800 underline">Intellipaat</span>
+              <span className="font-bold">SQL</span> | <span className="text-[#E05638] underline hover:text-[#0F172A]">Intellipaat</span>
             </span>
             <span className="italic text-[11px] sm:text-[12.5px]">Sep&apos;25</span>
           </div>

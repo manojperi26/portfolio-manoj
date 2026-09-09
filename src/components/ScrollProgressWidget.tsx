@@ -57,11 +57,11 @@ export const ScrollProgressWidget: React.FC = () => {
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, x: -10 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1, x: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8, x: -10 }}
-            className="flex items-center gap-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-slate-200/80 dark:border-slate-800 shadow-md text-xs font-semibold"
+            className="flex items-center gap-2 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-xs px-3 py-1.5 border border-[#E2E8F0] dark:border-[#1E293B] font-mono text-xs"
           >
-            {/* Circular Progress Ring */}
-            <div className="relative w-6 h-6 flex items-center justify-center">
-              <svg className="w-6 h-6 -rotate-90" viewBox="0 0 36 36">
+            {/* Circular Progress Ring with Terracotta Accent */}
+            <div className="relative w-5 h-5 flex items-center justify-center">
+              <svg className="w-5 h-5 -rotate-90" viewBox="0 0 36 36">
                 <path
                   className="text-slate-200 dark:text-slate-800"
                   strokeWidth="3.5"
@@ -70,22 +70,23 @@ export const ScrollProgressWidget: React.FC = () => {
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 />
                 <path
-                  className="text-cyan-500 transition-all duration-150 ease-out"
+                  className="text-[#E05638] transition-all duration-150 ease-out"
                   strokeDasharray={`${scrollProgress}, 100`}
                   strokeWidth="3.5"
-                  strokeLinecap="round"
+                  strokeLinecap="square"
                   stroke="currentColor"
                   fill="none"
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 />
               </svg>
-              <span className="absolute text-[9px] font-mono font-bold text-slate-700 dark:text-slate-300">
-                {scrollProgress}%
-              </span>
             </div>
 
-            {/* Active section label */}
-            <span className="hidden sm:inline text-slate-600 dark:text-slate-400 text-[11px] font-medium border-l border-slate-200 dark:border-slate-800 pl-2">
+            {/* Monospaced Progress and Active Section */}
+            <span className="font-bold text-[#0F172A] dark:text-[#F1F5F9]">
+              [{scrollProgress}%]
+            </span>
+
+            <span className="hidden sm:inline text-slate-500 dark:text-slate-400 text-[11px] border-l border-[#E2E8F0] dark:border-[#1E293B] pl-2 uppercase">
               {activeSection}
             </span>
 
@@ -94,9 +95,9 @@ export const ScrollProgressWidget: React.FC = () => {
               onClick={scrollToTop}
               title="Back to Top"
               aria-label="Scroll back to top"
-              className="p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"
+              className="p-1 hover:bg-slate-100 dark:hover:bg-[#1E293B] text-slate-500 hover:text-[#E05638] transition-colors cursor-pointer border-l border-[#E2E8F0] dark:border-[#1E293B] pl-1.5"
             >
-              <ArrowUp className="w-3.5 h-3.5" />
+              <ArrowUp className="w-3.5 h-3.5 text-[#E05638]" />
             </button>
           </motion.div>
         )}

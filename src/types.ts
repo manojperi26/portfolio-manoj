@@ -2,27 +2,14 @@ export interface PipelineStep {
   step: string;
   title: string;
   description: string;
-  tech: string;
-}
-
-export interface EngineeringChallenge {
-  problem: string;
-  solution: string;
-}
-
-export interface BenchmarkMetric {
-  metric: string;
-  value: string;
-  notes: string;
+  tech?: string;
 }
 
 export interface ProjectDeepDive {
   architectureTagline: string;
   pipelineSteps: PipelineStep[];
-  keyDecisions: string[];
-  challenges: EngineeringChallenge[];
-  benchmarks: BenchmarkMetric[];
-  datasetInfo: string;
+  quantitativeResults?: string[];
+  engineeringNotes?: string[];
 }
 
 export interface Project {

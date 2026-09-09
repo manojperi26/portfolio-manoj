@@ -82,55 +82,29 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/manojperi26/veri-doc',
     featured: true,
     deepDive: {
-      architectureTagline: 'Hybrid Dense-Sparse RAG with Cross-Encoder Reranking & Page-Level Provenance',
+      architectureTagline: 'Hybrid Dense-Sparse RAG with Page-Level Citations',
       pipelineSteps: [
         {
           step: '01',
-          title: 'Document Ingestion & Semantic Chunking',
-          description: 'Extracts clean textual streams from PDF, DOCX, PPTX, and TXT files using recursive character boundary detection with 512-token chunks and 64-token sliding window overlap.',
-          tech: 'PyPDF, python-docx, LangChain Chunkers'
+          title: 'Document Ingestion',
+          description: 'Handles PDF, DOCX, PPTX, and TXT uploads.'
         },
         {
           step: '02',
-          title: 'Dual-Vector Indexing (Dense + Sparse)',
-          description: 'Generates dense semantic embeddings for conceptual matching and inverted BM25 keyword indexes to preserve domain-specific medical, legal, and engineering nomenclature.',
-          tech: 'Pinecone Vector DB, BM25Okapi, OpenAI text-embedding-3'
+          title: 'Hybrid Retrieval',
+          description: 'Pinecone dense + BM25 sparse search.'
         },
         {
           step: '03',
-          title: 'Reciprocal Rank Fusion & Cross-Encoder Reranking',
-          description: 'Merges top-K candidates from both retrievers using Reciprocal Rank Fusion (RRF), passed through a cross-encoder model to score query-document joint relevance.',
-          tech: 'Cross-Encoder / ms-marco-MiniLM-L-6-v2'
+          title: 'Query Routing & Reranking',
+          description: 'Adaptive LLM router with cross-encoder reranking.'
         },
         {
           step: '04',
-          title: 'Contextual Compression & Verified Synthesis',
-          description: 'Compresses redundant passages to respect context windows, then prompts Groq-hosted Llama 3.3 70B to generate synthesis strictly anchored to cited page numbers.',
-          tech: 'Groq Cloud API, Llama 3.3 70B Versatile'
+          title: 'Contextual Compression & Synthesis',
+          description: "Groq's Llama 3.3 70B generates answers anchored to page-level citations with conversation memory."
         }
-      ],
-      keyDecisions: [
-        'Used BM25 alongside dense vector search because dense embeddings alone miss exact serial numbers, acronyms, and alphanumeric identifiers.',
-        'Selected Groq LPUs with Llama 3.3 70B to achieve ~450 tokens/sec inference speed, reducing total round-trip latency to under 800ms.',
-        'Enforced strict JSON-mode citation schema to eliminate hallucinated references and ensure verifiable source documents.'
-      ],
-      challenges: [
-        {
-          problem: 'Multi-column PDFs and scanned documents produced jumbled reading orders and broken table layouts.',
-          solution: 'Implemented layout-aware bounding box parser with layout analysis heuristics before vectorization.'
-        },
-        {
-          problem: 'Context window bloating and irrelevant noise when querying across multi-hundred page documents.',
-          solution: 'Built a dynamic relevance threshold filter and contextual sentence compressor that discards low-scoring peripheral text before prompt assembly.'
-        }
-      ],
-      benchmarks: [
-        { metric: 'Citation Grounding', value: '100%', notes: 'Zero hallucinated page references across test corpora' },
-        { metric: 'Inference Latency', value: '~650ms', notes: 'P95 response generation time via Groq LPUs' },
-        { metric: 'Retrieval Recall@5', value: '94.6%', notes: 'Outperformed pure vector retrieval by +14.2%' },
-        { metric: 'Supported Formats', value: '4 Formats', notes: 'Native PDF, DOCX, PPTX, and UTF-8 TXT' }
-      ],
-      datasetInfo: 'Evaluated on enterprise financial reports, technical manuals, and multi-page research publications.'
+      ]
     }
   },
   {
@@ -143,55 +117,37 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/manojperi26/data-whisper',
     featured: true,
     deepDive: {
-      architectureTagline: 'Autonomous Tabular Agent Loop with Python Code Sandbox & Live Visualizations',
+      architectureTagline: 'Conversational CSV Analysis Agent with Autonomous Multi-Step Reasoning',
       pipelineSteps: [
         {
           step: '01',
-          title: 'Schema Introspection & Column Typing',
-          description: 'Loads CSV/tabular payloads into memory, extracts metadata, summary distributions, and categorical card sets to construct a lightweight system prompt prompt context.',
-          tech: 'Pandas, NumPy, Python I/O'
+          title: 'Natural Language Query Input',
+          description: 'Interactive natural language interface built with Streamlit.'
         },
         {
           step: '02',
-          title: 'ReAct Agent Reasoning Loop',
-          description: 'Agent analyzes query intent, formulates a hypothesis (Thought), determines the calculation method (Action: python_repl), and submits executable code.',
-          tech: 'LangChain Agents, ReAct Prompt Pattern'
+          title: 'Autonomous Reasoning',
+          description: "Multi-step reasoning driven by LangChain's ReAct framework."
         },
         {
           step: '03',
-          title: 'Sandboxed Python Execution & Self-Correction',
-          description: 'Executes pandas aggregations and matplotlib/seaborn visualization code in an isolated session, capturing errors and feeding tracebacks back to the agent for auto-repair.',
-          tech: 'Python REPL, Matplotlib, Seaborn'
+          title: 'LLM Query Interpretation',
+          description: 'Query intent and code generation via Groq-hosted Llama 3.3 70B.'
         },
         {
           step: '04',
-          title: 'Streamlit UI & Dynamic Chart Rendering',
-          description: 'Renders the agent thought trace, textual executive summary, and responsive interactive data visualizations with instant user download options.',
-          tech: 'Streamlit, ngrok Tunneling'
+          title: 'Real-Time Chart & Insight Generation',
+          description: 'Instant visualization generation and output delivery, deployed via ngrok.'
         }
       ],
-      keyDecisions: [
-        'Adopted the ReAct pattern rather than single-shot code generation because complex questions (e.g. "which category had highest growth compared to median?") require multi-step verification.',
-        'Used Groq-hosted Llama 3.3 70B for its exceptional reasoning-to-speed ratio, allowing the agent to complete 3-4 iterative thoughts in seconds.',
-        'Implemented automatic dataframe column normalization (lowercasing, whitespace trimming) to prevent trivial KeyErrors.'
+      quantitativeResults: [
+        '91% query interpretation accuracy across test datasets'
       ],
-      challenges: [
-        {
-          problem: 'Agent occasionally entered infinite loop or exceeded max iterations on ambiguous user queries.',
-          solution: 'Implemented dynamic iteration ceilings with a graceful fallback agent that returns the best partial observation alongside clarifying questions.'
-        },
-        {
-          problem: 'Matplotlib canvas conflicts when generating multiple visualizations within a single Streamlit session.',
-          solution: 'Refactored plotting routines to create explicit figure handles with plt.close(fig) teardown handlers.'
-        }
-      ],
-      benchmarks: [
-        { metric: 'Query Interpretation', value: '91.0%', notes: 'Accurate analytical execution across 120 benchmark queries' },
-        { metric: 'Agent Success Rate', value: '98.4%', notes: 'Percentage of runs completing without unhandled exceptions' },
-        { metric: 'Chart Generation', value: '< 1.2s', notes: 'Average latency from query to rendered visual plot' },
-        { metric: 'Auto-Correction Rate', value: '87.5%', notes: 'First-try error recovery on syntax/schema mismatches' }
-      ],
-      datasetInfo: 'Tested on retail transaction logs, HR attrition surveys, and time-stamped e-commerce sales datasets.'
+      engineeringNotes: [
+        'Debugged agent iteration-limit failures',
+        'Fixed chart-rendering errors',
+        'Improved end-to-end query reliability'
+      ]
     }
   },
   {
@@ -204,55 +160,33 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/manojperi26/Alzheimer',
     featured: true,
     deepDive: {
-      architectureTagline: 'Fine-Tuned Deep Convolutional Network with Grad-CAM Explainable AI for Neuroimaging',
+      architectureTagline: "4-Class Alzheimer's MRI Classifier via VGG16 Transfer Learning",
       pipelineSteps: [
         {
           step: '01',
-          title: 'Neuroimaging Ingestion & CLAHE Enhancement',
-          description: 'Ingests axial brain MRI scans, resizes to 224x224, normalizes voxel intensities to [0,1], and applies Contrast Limited Adaptive Histogram Equalization (CLAHE) to reveal subtle gray/white matter atrophy.',
-          tech: 'OpenCV, NumPy, Scikit-image'
+          title: 'Data Preprocessing & Augmentation',
+          description: 'Image normalization and augmentation across all four disease stages.'
         },
         {
           step: '02',
-          title: 'Two-Phase Transfer Learning Strategy',
-          description: 'Phase 1: Freeze base VGG16 weights pre-trained on ImageNet to train custom dense heads. Phase 2: Unfreeze top block5_conv layers with low learning rate (1e-5) for domain-specific fine-tuning.',
-          tech: 'TensorFlow, Keras Functional API'
+          title: 'VGG16 Transfer Learning',
+          description: 'Transfer learning leveraging pretrained VGG16 base architecture.'
         },
         {
           step: '03',
-          title: 'Softmax Classification Head',
-          description: 'Outputs calibrated posterior probability distribution across 4 clinical stages: Non-Demented, Very Mild Demented, Mild Demented, and Moderate Demented.',
-          tech: 'Categorical Cross-Entropy, Adam Optimizer'
+          title: 'Two-Phase Training Strategy',
+          description: 'Staged training with custom classification head fine-tuning.'
         },
         {
           step: '04',
-          title: 'Grad-CAM Attention Mapping & Streamlit UI',
-          description: 'Calculates gradients of top predicted class with respect to final conv layer feature maps to generate clinical visual heatmaps highlighting hippocampal degeneration.',
-          tech: 'Grad-CAM, Streamlit, Matplotlib'
+          title: 'Interactive Web Deployment',
+          description: 'Real-time prediction interface deployed as a Streamlit web app.'
         }
       ],
-      keyDecisions: [
-        'Chose VGG16 over deeper ResNet-50 because VGG16 retains higher spatial resolution in intermediate feature maps, which is critical for detecting subtle cortical thinning.',
-        'Introduced focal loss and class-weighted sampling to counteract severe dataset skew where Moderate Demented cases represented under 5% of samples.',
-        'Integrated Grad-CAM heatmaps so clinicians can inspect model focus areas rather than relying on an opaque black-box probability.'
-      ],
-      challenges: [
-        {
-          problem: 'Overfitting due to limited clinical MRI scan availability across early-stage dementia classes.',
-          solution: 'Applied rotation, zoom, shear, and horizontal reflection data augmentation pipelines alongside 0.5 dropout regularizers.'
-        },
-        {
-          problem: 'Boundary classification errors between Non-Demented and Very Mild Demented patients.',
-          solution: 'Tuned learning rate decay schedules (ReduceLROnPlateau) and utilized high-pass spatial filtering during preprocessing.'
-        }
-      ],
-      benchmarks: [
-        { metric: 'Overall Accuracy', value: '97.89%', notes: 'Measured on held-out 4-class test dataset' },
-        { metric: 'Diagnostic Precision', value: '98.1%', notes: 'Macro-averaged precision across all 4 disease stages' },
-        { metric: 'Sensitivity (Recall)', value: '97.6%', notes: 'High sensitivity minimizes false negatives in early triage' },
-        { metric: 'Inference Latency', value: '< 95ms', notes: 'Real-time classification per axial slice' }
-      ],
-      datasetInfo: 'Trained and validated on multi-class OASIS and ADNI curated Alzheimer brain MRI datasets.'
+      quantitativeResults: [
+        "97.89% classification accuracy across all four disease stages",
+        "4-class classification"
+      ]
     }
   },
   {
@@ -265,55 +199,33 @@ export const PROJECTS_DATA: Project[] = [
     githubUrl: 'https://github.com/manojperi26/walmart-sales-prediction',
     featured: true,
     deepDive: {
-      architectureTagline: 'Multi-Store Econometric Feature Engineering & Ensemble Time-Series Regression',
+      architectureTagline: 'Random Forest Regression for 12-Week Retail Sales Forecasting',
       pipelineSteps: [
         {
           step: '01',
-          title: 'Multi-Store Historical Ingestion',
-          description: 'Consolidates 6,435 weekly records across 45 regional retail superstores, merging department logs with macroeconomic indices (CPI, fuel prices, unemployment).',
-          tech: 'Pandas, NumPy, Statistical EDA'
+          title: 'Data Investigation',
+          description: 'Exploration and ingestion across 6,435 historical records and 45 retail stores.'
         },
         {
           step: '02',
-          title: 'Macroeconomic & Calendar Feature Engineering',
-          description: 'Derives temporal signals (week of year, month, quarter, days until holiday) and interaction terms between fuel price fluctuations and purchasing power.',
-          tech: 'Scikit-learn Preprocessing, One-Hot Encoding'
+          title: 'Exploratory Data Analysis (EDA)',
+          description: 'Analysis of seasonality, holiday indicators, and macroeconomic drivers.'
         },
         {
           step: '03',
-          title: 'Holiday Weighting & MarkDown Decomposition',
-          description: 'Specialized weighting for promotional holiday weeks (Super Bowl, Labor Day, Thanksgiving, Christmas) to accurately capture non-linear demand surges.',
-          tech: 'Cyclical Encoding (Sin/Cos), Lag Features'
+          title: 'Random Forest Regression Modeling',
+          description: 'Multi-tree ensemble regression trained with Scikit-learn.'
         },
         {
           step: '04',
-          title: 'Random Forest Ensemble Modeling',
-          description: 'Trains an ensemble of 100 decorrelated decision trees with tuned tree depth and min_samples_split via 5-fold cross validation to produce 12-week forward projections.',
-          tech: 'Scikit-learn RandomForestRegressor, GridSearchCV'
+          title: 'Forecast Output & Application',
+          description: '12-week sales projections utilized for data-driven inventory and demand planning.'
         }
       ],
-      keyDecisions: [
-        'Chose Random Forest regression over standard ARIMA because the dataset included crucial exogenous regressors (CPI, Unemployment, Temperature) which classical univariate ARIMA cannot incorporate natively.',
-        'Engineered holiday proximity indicators which provided the highest feature importance gain (+18.4% variance explained).',
-        'Implemented Weighted Mean Absolute Error (WMAE) metric during cross-validation to penalize holiday forecast errors 5x higher than normal weeks.'
-      ],
-      challenges: [
-        {
-          problem: 'Extreme demand spikes during Thanksgiving/Black Friday weeks distorted standard linear models.',
-          solution: 'Constructed non-linear tree splits with explicit binary holiday interaction matrices, isolating holiday distributions from baseline weekly demand.'
-        },
-        {
-          problem: 'Missing markdown values prior to November 2011 creating data sparsity.',
-          solution: 'Applied iterative multivariate imputation and feature presence flags rather than zero-dropping records.'
-        }
-      ],
-      benchmarks: [
-        { metric: 'Accuracy Score (R²)', value: '0.93', notes: 'High coefficient of determination on out-of-sample test split' },
-        { metric: 'WMAE Error Reduction', value: '-18.4%', notes: 'Superior error reduction compared to baseline econometric models' },
-        { metric: 'Forecast Horizon', value: '12 Weeks', notes: 'Continuous forward rolling forecast for inventory replenishment' },
-        { metric: 'Stores & Records', value: '45 Stores', notes: '6,435 multi-department transactional weeks evaluated' }
-      ],
-      datasetInfo: 'Historical weekly sales data across 45 Walmart stores with CPI, Fuel Price, Unemployment, and Promotional MarkDowns.'
+      quantitativeResults: [
+        '93% prediction accuracy (R² = 0.93)',
+        '6,435 retail records across 45 stores'
+      ]
     }
   }
 ];
@@ -325,7 +237,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     issuer: 'Lovely Professional University',
     date: "Aug'26",
     image: '/portfolio/cert-lpu-ai-real.jpg',
-    verifyUrl: 'https://www.lpu.in',
+    verifyUrl: 'https://drive.google.com/file/d/1ElClhINEGdYyO5hA7_hhA1ejfXxYoLxp/view',
     skillsAcquired: ['LLMs', 'Agentic AI', 'Prompt Engineering', 'LangChain']
   },
   {
@@ -334,7 +246,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     issuer: 'Intellipaat',
     date: "Jun'26",
     image: '/portfolio/cert-drishti-real.jpg',
-    verifyUrl: 'https://intellipaat.com',
+    verifyUrl: 'https://drive.google.com/file/d/1CiSAti8uVJ45r80QqKObREYLJbf1ix4B/view?usp=sharing',
     skillsAcquired: ['AI & Data Science', 'Deep Learning', 'IIT Indore DRISHTI CPS', 'Machine Learning']
   },
   {
@@ -343,7 +255,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     issuer: 'Intellipaat',
     date: "Mar'26",
     image: '/portfolio/cert-python-real.jpg',
-    verifyUrl: 'https://intellipaat.com',
+    verifyUrl: 'https://lms.intellipaat.com/certificate-link/?Yz1jdXMtOTEyMzgwJnU9Mjg4OTg5JmV4dD0x',
     skillsAcquired: ['Python', 'Data Structures', 'OOPs', 'Algorithms']
   },
   {
@@ -352,7 +264,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     issuer: 'Intellipaat',
     date: "Sep'25",
     image: '/portfolio/cert-sql-real.jpg',
-    verifyUrl: 'https://intellipaat.com',
+    verifyUrl: 'https://lms.intellipaat.com/certificate-link/?Yz1jdXMtNTY5NDc1NyZ1PTI4ODk4OSZleHQ9MQ==',
     skillsAcquired: ['SQL', 'Relational Databases', 'Queries & Joins', 'Database Design']
   }
 ];

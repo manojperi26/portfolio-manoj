@@ -15,44 +15,56 @@ export const ResumeSection: React.FC = () => {
   };
 
   return (
-    <section id="resume" className="relative py-20 md:py-24 bg-gradient-to-b from-white via-slate-50 to-slate-100/60 dark:from-[#070D18] dark:via-[#091322] dark:to-[#070D18] transition-colors duration-300">
+    <section id="resume" className="relative py-20 md:py-24 bg-[#F8F9FA] dark:bg-[#0B0F17] transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         {/* Header */}
         <SectionFade className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-violet-100/90 dark:bg-violet-950/70 text-violet-800 dark:text-violet-300 mb-3 border border-violet-200 dark:border-violet-800/80">
-            <FileText className="w-3.5 h-3.5 text-violet-700 dark:text-violet-400" />
-            <span>Curriculum Vitae</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 font-mono text-xs bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#1E293B] text-slate-700 dark:text-slate-300 mb-3">
+            <span className="w-1.5 h-1.5 bg-[#E05638]" />
+            <span className="font-bold text-[#0F172A] dark:text-[#F1F5F9]">[RESUME // 05]</span>
+            <span className="text-slate-400">CURRICULUM VITAE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
-            My Resume
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A] dark:text-[#F1F5F9] tracking-tight mb-3">
+            Resume &amp; Credentials
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
-            Review my specialized qualifications, cloud certifications, education, and technical experience.
+          <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed font-sans">
+            Summary of academic background, technical skills, coursework, and practical projects.
           </p>
         </SectionFade>
 
         {/* Resume Preview Card */}
         <SectionFade delay={0.1} className="max-w-4xl lg:max-w-5xl mx-auto w-full">
-          <div className="bg-white dark:bg-[#0B1528] rounded-3xl p-5 sm:p-8 lg:p-10 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-xl dark:hover:shadow-cyan-950/40 hover:border-cyan-300 dark:hover:border-cyan-500 transition-all duration-300 flex flex-col items-center">
+          <div className="bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#1E293B] p-5 sm:p-8 flex flex-col items-center">
+            {/* Top Dossier Bar */}
+            <div className="w-full flex items-center justify-between pb-3 mb-4 border-b border-[#E2E8F0] dark:border-[#1E293B] font-mono text-xs text-slate-600 dark:text-slate-400">
+              <span className="flex items-center gap-1.5 font-bold text-[#0F172A] dark:text-[#F1F5F9]">
+                <FileText className="w-3.5 h-3.5 text-[#E05638]" />
+                <span>DOC: PERI_MANOJ_CV_2026.PDF</span>
+              </span>
+              <span className="text-[11px] text-slate-400 hidden sm:inline">
+                REVISED: AUGUST 2026 &bull; LATEX FORMAT
+              </span>
+            </div>
+
             {/* Document Frame - Full readable document container */}
-            <div className="relative w-full bg-slate-100 dark:bg-slate-900/80 rounded-2xl border border-slate-200/90 dark:border-slate-800 shadow-inner group mb-8 p-2 sm:p-5 overflow-hidden">
-              <div className="w-full max-h-[840px] overflow-y-auto rounded-xl bg-white shadow-md border border-slate-200/70">
+            <div className="relative w-full bg-slate-100 dark:bg-[#070D18] border border-[#E2E8F0] dark:border-[#1E293B] mb-6 p-2 sm:p-4 overflow-hidden">
+              <div className="w-full max-h-[840px] overflow-y-auto bg-white border border-slate-200">
                 <ResumeDocument interactive={true} />
               </div>
 
               {/* Quick Expand Badge */}
               <button
                 onClick={() => setLightboxOpen(true)}
-                className="absolute top-5 right-5 sm:top-8 sm:right-8 px-3.5 py-1.5 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white text-xs font-bold shadow-lg flex items-center gap-1.5 backdrop-blur-md transition-all hover:scale-105 cursor-pointer"
+                className="absolute top-4 right-4 sm:top-6 sm:right-6 px-3 py-1.5 bg-[#0F172A] hover:bg-[#E05638] text-white font-mono text-xs font-bold border border-white/20 flex items-center gap-1.5 transition-colors cursor-pointer"
                 title="Expand to Fullscreen"
               >
-                <Maximize2 className="w-3.5 h-3.5 text-cyan-400" />
-                <span className="hidden sm:inline">Expand Fullscreen</span>
+                <Maximize2 className="w-3 h-3 text-[#E05638]" />
+                <span className="hidden sm:inline">[FULLSCREEN VIEW]</span>
               </button>
             </div>
 
             {/* Download and Zoom Controls */}
-            <div className="flex flex-wrap items-center justify-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto font-mono text-xs">
               <a
                 id="resume-download-button"
                 href="https://drive.google.com/uc?export=download&id=1v7TS9Fo_nFJ7VyfObNFY9mfm7HWfxXb0"
@@ -60,32 +72,32 @@ export const ResumeSection: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Download Resume (PDF)"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white font-bold text-sm shadow-md shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/35 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-[#0F172A] text-[#F1F5F9] dark:bg-[#F1F5F9] dark:text-[#0F172A] hover:bg-[#E05638] dark:hover:bg-[#E05638] dark:hover:text-white font-bold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E05638]"
               >
                 <Download className="w-4 h-4" />
-                <span>Download Resume</span>
+                <span>[DOWNLOAD CV // PDF]</span>
               </a>
 
               <button
                 id="resume-preview-button"
                 onClick={() => setLightboxOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white dark:bg-slate-800 hover:bg-cyan-50/50 dark:hover:bg-slate-700 text-cyan-700 dark:text-cyan-300 hover:text-cyan-800 dark:hover:text-cyan-200 font-semibold text-sm border-2 border-cyan-400/80 dark:border-cyan-500 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 border border-[#E2E8F0] dark:border-[#1E293B] hover:bg-slate-100 dark:hover:bg-[#1E293B] text-slate-800 dark:text-slate-200 font-bold transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E05638]"
               >
-                <Maximize2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                <span>Full Interactive View</span>
+                <Maximize2 className="w-3.5 h-3.5 text-[#E05638]" />
+                <span>[VIEW FULL RESUME]</span>
               </button>
             </div>
           </div>
         </SectionFade>
       </div>
 
-      {/* Subtle organic section divider to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200/80 dark:via-slate-800 to-transparent" />
+      {/* 1px Hairline Section Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-[#E2E8F0] dark:bg-[#1E293B]" />
 
       {/* Lightbox Modal with Interactive Document */}
       {lightboxOpen && (
         <div
-          className="fixed inset-0 z-50 bg-[#0B1120]/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-[#0F172A]/85 backdrop-blur-xs flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
           onClick={(e) => {
             if (e.target === e.currentTarget) setLightboxOpen(false);
           }}
@@ -97,19 +109,20 @@ export const ResumeSection: React.FC = () => {
             aria-labelledby="resume-lightbox-title"
             className="relative max-w-4xl max-h-[96vh] w-full flex flex-col items-center my-auto"
           >
-            {/* Modal Controls */}
-            <div className="w-full flex items-center justify-between pb-3 text-white px-2">
-              <span id="resume-lightbox-title" className="text-sm font-semibold truncate">
-                Curriculum Vitae — {PERSONAL_INFO.name}
+            {/* Modal Controls Bar */}
+            <div className="w-full flex items-center justify-between pb-2 text-white px-2 font-mono text-xs">
+              <span id="resume-lightbox-title" className="font-bold flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#E05638]" />
+                [CV-DOSSIER] // {PERSONAL_INFO.name.toUpperCase()}
               </span>
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrint}
-                  className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="px-2.5 py-1 border border-white/20 hover:border-[#E05638] hover:text-[#E05638] text-white flex items-center gap-1.5 transition-colors cursor-pointer"
                   title="Print / Save as PDF"
                 >
                   <Printer className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Print / PDF</span>
+                  <span className="hidden sm:inline">[PRINT / PDF]</span>
                 </button>
                 <a
                   href="https://drive.google.com/uc?export=download&id=1v7TS9Fo_nFJ7VyfObNFY9mfm7HWfxXb0"
@@ -117,23 +130,23 @@ export const ResumeSection: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Download Resume (PDF)"
-                  className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 shadow-xs"
+                  className="px-2.5 py-1 bg-[#E05638] text-white font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Download PDF</span>
+                  <span>[DOWNLOAD]</span>
                 </a>
                 <button
                   onClick={() => setLightboxOpen(false)}
-                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="p-1 border border-white/20 hover:border-[#E05638] hover:text-[#E05638] text-white transition-colors cursor-pointer"
                   aria-label="Close Preview"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             {/* Interactive Document Container */}
-            <div className="bg-white dark:bg-slate-900 rounded-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl p-2 sm:p-4 border border-slate-200 dark:border-slate-800">
+            <div className="bg-white border border-[#E2E8F0] dark:border-[#1E293B] w-full max-h-[85vh] overflow-y-auto p-2 sm:p-4">
               <ResumeDocument interactive={true} />
             </div>
           </div>

@@ -11,7 +11,7 @@ interface SpotlightCardProps {
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(6, 182, 212, 0.14)',
+  spotlightColor = 'rgba(224, 86, 56, 0.08)',
   onClick,
   id
 }) => {
@@ -44,7 +44,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className={`relative overflow-hidden transition-all duration-300 ${className}`}
+      className={`relative overflow-hidden transition-all duration-150 ease-out ${className}`}
     >
       {/* Dynamic Cursor Spotlight Overlay */}
       <div
@@ -61,7 +61,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
         className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300 z-10"
         style={{
           opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(300px circle at ${position.x}px ${position.y}px, rgba(34, 211, 238, 0.25), transparent 70%)`,
+          background: `radial-gradient(300px circle at ${position.x}px ${position.y}px, rgba(224, 86, 56, 0.18), transparent 70%)`,
           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           maskComposite: 'exclude',

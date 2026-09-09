@@ -36,7 +36,7 @@ export const EmailModal: React.FC<EmailModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-[#0F172A]/80 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -46,84 +46,93 @@ export const EmailModal: React.FC<EmailModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="email-modal-title"
-        className="bg-white dark:bg-[#0B1528] rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-200 dark:border-slate-800 relative my-auto"
+        className="bg-white dark:bg-[#0B0F17] max-w-md w-full p-6 sm:p-7 border border-[#E2E8F0] dark:border-[#1E293B] relative my-auto"
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+          className="absolute top-4 right-4 p-1.5 border border-[#E2E8F0] dark:border-[#1E293B] hover:border-[#E05638] text-slate-500 hover:text-[#E05638] transition-colors cursor-pointer"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {/* Header */}
         <div className="mb-5">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-100/90 dark:bg-violet-950/70 text-violet-800 dark:text-violet-300 mb-2.5 border border-violet-200 dark:border-violet-800/80">
-            <Sparkles className="w-3.5 h-3.5 text-violet-600 dark:text-violet-400" />
-            <span>Direct Email</span>
+          <div className="inline-flex items-center gap-2 px-2 py-0.5 font-mono text-[11px] bg-slate-50 dark:bg-[#070D18] border border-[#E2E8F0] dark:border-[#1E293B] text-slate-700 dark:text-slate-300 mb-2">
+            <span className="w-1.5 h-1.5 bg-[#E05638]" />
+            <span className="font-bold text-[#0F172A] dark:text-[#F1F5F9]">[DISPATCH // DIRECT]</span>
+            <span className="text-slate-400">ELECTRONIC MAIL</span>
           </div>
-          <h3 id="email-modal-title" className="text-xl font-bold text-slate-900 dark:text-white">
-            Contact via Email
+          <h3 id="email-modal-title" className="text-xl font-serif font-bold text-[#0F172A] dark:text-[#F1F5F9] tracking-tight">
+            Direct Mail Routing
           </h3>
-          <p className="text-slate-600 dark:text-slate-300 text-xs mt-1">
-            Choose your preferred email provider or copy the address directly:
+          <p className="text-slate-600 dark:text-slate-400 text-xs mt-1 font-sans">
+            Select an enterprise mail client below or copy recipient coordinates to clipboard:
           </p>
         </div>
 
         {/* Email Address Pill with 1-Click Copy */}
-        <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 flex items-center justify-between gap-3 mb-5">
-          <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="w-8 h-8 rounded-xl bg-cyan-100/80 dark:bg-cyan-950/80 text-cyan-800 dark:text-cyan-300 flex items-center justify-center shrink-0">
-              <Mail className="w-4 h-4" />
+        <div className="p-3 bg-slate-50 dark:bg-[#070D18] border border-[#E2E8F0] dark:border-[#1E293B] flex items-center justify-between gap-3 mb-5 font-mono">
+          <div className="flex items-center gap-2 overflow-hidden">
+            <div className="w-7 h-7 bg-white dark:bg-[#0F172A] border border-[#E2E8F0] dark:border-[#1E293B] text-[#E05638] flex items-center justify-center shrink-0">
+              <Mail className="w-3.5 h-3.5" />
             </div>
             <div className="truncate">
-              <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Recipient</div>
-              <div className="text-xs font-bold text-slate-800 dark:text-slate-200 select-all truncate">{email}</div>
+              <div className="text-[9px] uppercase font-bold text-slate-400">RECIPIENT</div>
+              <div className="text-xs font-bold text-[#0F172A] dark:text-[#F1F5F9] select-all truncate">{email}</div>
             </div>
           </div>
-          <button
-            onClick={handleCopy}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ${
-              copied
-                ? 'bg-gradient-to-r from-cyan-500 to-violet-600 text-white shadow-xs'
-                : 'bg-white dark:bg-slate-700 hover:bg-cyan-50 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-600'
-            }`}
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5" />
-                <span>Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5" />
-                <span>Copy</span>
-              </>
+          <div className="relative">
+            <button
+              onClick={handleCopy}
+              className={`px-3 py-1.5 text-xs font-bold font-mono border flex items-center gap-1.5 transition-all duration-150 ease-out cursor-pointer shrink-0 ${
+                copied
+                  ? 'bg-[#E05638] text-white border-[#E05638]'
+                  : 'bg-white dark:bg-[#0B0F17] hover:bg-[#0F172A] hover:text-[#F1F5F9] dark:hover:bg-[#F1F5F9] dark:hover:text-[#0F172A] text-slate-700 dark:text-slate-300 border-[#E2E8F0] dark:border-[#1E293B]'
+              }`}
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5" />
+                  <span>[COPIED]</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5 text-[#E05638]" />
+                  <span>[COPY]</span>
+                </>
+              )}
+            </button>
+            {/* Floating Micro-Tooltip */}
+            {copied && (
+              <div className="absolute -top-8 right-0 px-2 py-0.5 bg-[#0F172A] dark:bg-[#F1F5F9] text-white dark:text-[#0F172A] text-[9px] font-mono font-bold shadow-lg border border-[#E05638] z-30 whitespace-nowrap animate-in fade-in duration-150 pointer-events-none">
+                [COPIED TO CLIPBOARD]
+              </div>
             )}
-          </button>
+          </div>
         </div>
 
         {/* Provider Launch Options */}
-        <div className="space-y-2.5 mb-5">
+        <div className="space-y-2 mb-5 font-mono text-xs">
           {/* Gmail */}
           <a
             href={gmailUrl}
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="w-full p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-red-50/50 dark:hover:bg-red-950/40 border border-slate-200 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-700 text-slate-800 dark:text-slate-200 hover:text-red-700 dark:hover:text-red-300 transition-all flex items-center justify-between group shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+            className="w-full p-2.5 bg-white dark:bg-[#070D18] hover:border-[#E05638] border border-[#E2E8F0] dark:border-[#1E293B] text-slate-800 dark:text-slate-200 transition-colors flex items-center justify-between group cursor-pointer"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-lg bg-red-100 dark:bg-red-950/80 text-red-600 dark:text-red-400 flex items-center justify-center text-xs font-bold">
-                M
+            <div className="flex items-center gap-2.5">
+              <div className="w-6 h-6 border border-[#E2E8F0] dark:border-[#1E293B] text-[#E05638] flex items-center justify-center text-[10px] font-bold">
+                G
               </div>
-              <div className="text-left">
-                <div className="text-xs font-bold">Open in Gmail</div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400">Opens compose window directly in your browser</div>
+              <div className="text-left font-sans">
+                <div className="text-xs font-bold font-mono text-[#0F172A] dark:text-[#F1F5F9]">Google Workspace / Gmail</div>
+                <div className="text-[10px] text-slate-500 dark:text-slate-400">Launch compose window directly in browser</div>
               </div>
             </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-red-600 dark:group-hover:text-red-400 group-hover:translate-x-0.5 transition-all" />
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#E05638] transition-colors" />
           </a>
 
           {/* Outlook / Hotmail */}
@@ -132,18 +141,18 @@ export const EmailModal: React.FC<EmailModalProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="w-full p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-blue-50/50 dark:hover:bg-blue-950/40 border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 text-slate-800 dark:text-slate-200 hover:text-blue-700 dark:hover:text-blue-300 transition-all flex items-center justify-between group shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+            className="w-full p-2.5 bg-white dark:bg-[#070D18] hover:border-[#E05638] border border-[#E2E8F0] dark:border-[#1E293B] text-slate-800 dark:text-slate-200 transition-colors flex items-center justify-between group cursor-pointer"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-lg bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xs font-bold">
+            <div className="flex items-center gap-2.5">
+              <div className="w-6 h-6 border border-[#E2E8F0] dark:border-[#1E293B] text-[#E05638] flex items-center justify-center text-[10px] font-bold">
                 O
               </div>
-              <div className="text-left">
-                <div className="text-xs font-bold">Open in Outlook Web</div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400">For Microsoft 365, Hotmail, or Outlook</div>
+              <div className="text-left font-sans">
+                <div className="text-xs font-bold font-mono text-[#0F172A] dark:text-[#F1F5F9]">Microsoft Outlook Web</div>
+                <div className="text-[10px] text-slate-500 dark:text-slate-400">Microsoft 365, Hotmail, or Outlook</div>
               </div>
             </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#E05638] transition-colors" />
           </a>
 
           {/* Yahoo Mail */}
@@ -152,45 +161,37 @@ export const EmailModal: React.FC<EmailModalProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="w-full p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-purple-50/50 dark:hover:bg-purple-950/40 border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-700 text-slate-800 dark:text-slate-200 hover:text-purple-700 dark:hover:text-purple-300 transition-all flex items-center justify-between group shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+            className="w-full p-2.5 bg-white dark:bg-[#070D18] hover:border-[#E05638] border border-[#E2E8F0] dark:border-[#1E293B] text-slate-800 dark:text-slate-200 transition-colors flex items-center justify-between group cursor-pointer"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-lg bg-purple-100 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xs font-bold">
+            <div className="flex items-center gap-2.5">
+              <div className="w-6 h-6 border border-[#E2E8F0] dark:border-[#1E293B] text-[#E05638] flex items-center justify-center text-[10px] font-bold">
                 Y
               </div>
-              <div className="text-left">
-                <div className="text-xs font-bold">Open in Yahoo Mail</div>
+              <div className="text-left font-sans">
+                <div className="text-xs font-bold font-mono text-[#0F172A] dark:text-[#F1F5F9]">Yahoo Mail</div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400">Opens compose tab in Yahoo webmail</div>
               </div>
             </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 group-hover:translate-x-0.5 transition-all" />
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#E05638] transition-colors" />
           </a>
 
           {/* System Default Mail App (mailto) */}
           <a
             href={mailtoUrl}
             onClick={onClose}
-            className="w-full p-3 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-all flex items-center justify-between group shadow-2xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+            className="w-full p-2.5 bg-white dark:bg-[#070D18] hover:border-[#E05638] border border-[#E2E8F0] dark:border-[#1E293B] text-slate-800 dark:text-slate-200 transition-colors flex items-center justify-between group cursor-pointer"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 flex items-center justify-center">
-                <Mail className="w-4 h-4" />
+            <div className="flex items-center gap-2.5">
+              <div className="w-6 h-6 border border-[#E2E8F0] dark:border-[#1E293B] text-[#E05638] flex items-center justify-center">
+                <Mail className="w-3.5 h-3.5" />
               </div>
-              <div className="text-left">
-                <div className="text-xs font-bold">Default System Mail App</div>
+              <div className="text-left font-sans">
+                <div className="text-xs font-bold font-mono text-[#0F172A] dark:text-[#F1F5F9]">System Protocol Client</div>
                 <div className="text-[10px] text-slate-500 dark:text-slate-400">Apple Mail, Windows Mail, Thunderbird</div>
               </div>
             </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 group-hover:translate-x-0.5 transition-all" />
+            <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#E05638] transition-colors" />
           </a>
-        </div>
-
-        {/* Notice about why mailto might not open */}
-        <div className="flex items-start gap-2 p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200/80 dark:border-amber-800/80 text-amber-900 dark:text-amber-200 text-[11px] mb-4">
-          <AlertCircle className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400 shrink-0 mt-0.5" />
-          <span>
-            If desktop mail apps don&apos;t launch automatically on your computer, use <strong>Open in Gmail</strong> or copy the email address directly.
-          </span>
         </div>
 
         {/* Alternative: In-App Contact Form */}
@@ -200,10 +201,10 @@ export const EmailModal: React.FC<EmailModalProps> = ({
               onClose();
               onOpenContactForm();
             }}
-            className="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white font-semibold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 shadow-xs"
+            className="w-full py-2.5 bg-[#0F172A] text-[#F1F5F9] dark:bg-[#F1F5F9] dark:text-[#0F172A] hover:bg-[#E05638] dark:hover:bg-[#E05638] dark:hover:text-white font-mono font-bold text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E05638]"
           >
             <Send className="w-3.5 h-3.5" />
-            <span>Send Message via In-App Form</span>
+            <span>[SWITCH TO DISPATCH FORM]</span>
           </button>
         )}
       </div>

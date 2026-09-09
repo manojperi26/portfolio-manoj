@@ -6,12 +6,10 @@ import { SkillsSection } from './components/SkillsSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { InternshipsSection } from './components/InternshipsSection';
-import { UniversitySection } from './components/UniversitySection';
 import { ResumeSection } from './components/ResumeSection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { EmailModal } from './components/EmailModal';
-import { AIChatAssistant } from './components/AIChatAssistant';
 import { ScrollProgressWidget } from './components/ScrollProgressWidget';
 
 function AppContent() {
@@ -19,13 +17,13 @@ function AppContent() {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#070D18] text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-cyan-100 dark:selection:bg-cyan-900/60 selection:text-cyan-900 dark:selection:text-cyan-100 transition-colors duration-300">
+    <div className="min-h-screen bg-[#F8F9FA] dark:bg-[#0B0F17] text-[#0F172A] dark:text-[#F1F5F9] font-sans antialiased selection:bg-[#E05638]/20 selection:text-[#0F172A] dark:selection:text-white transition-colors duration-300">
       {/* Skip to Content for Keyboard/Screen Reader Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-gradient-to-r focus:from-cyan-500 focus:to-violet-600 focus:text-white focus:font-semibold focus:text-sm focus:rounded-xl focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-cyan-300"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0F172A] dark:focus:bg-[#F1F5F9] focus:text-[#F1F5F9] dark:focus:text-[#0F172A] focus:font-mono focus:text-xs focus:rounded-none focus:border focus:border-[#E05638] focus:outline-none"
       >
-        Skip to main content
+        [SKIP TO CONTENT]
       </a>
 
       {/* Navigation Bar with Theme Switcher */}
@@ -41,7 +39,6 @@ function AppContent() {
         <ProjectsSection />
         <CertificationsSection />
         <InternshipsSection />
-        <UniversitySection />
         <ResumeSection />
       </main>
 
@@ -50,9 +47,6 @@ function AppContent() {
 
       {/* Floating Scroll Progress & Back-to-Top Widget */}
       <ScrollProgressWidget />
-
-      {/* Domain-Specific AI Portfolio Chat Assistant */}
-      <AIChatAssistant />
 
       {/* Contact Modal */}
       <ContactModal
