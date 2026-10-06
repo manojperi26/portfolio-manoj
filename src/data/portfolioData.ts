@@ -1,4 +1,4 @@
-import { Project, SkillItem, Certification, Internship } from '../types';
+import { Project, SkillItem, Certification, Internship, EducationItem, SoftSkillItem } from '../types';
 
 export const PERSONAL_INFO = {
   name: 'Peri Naga Venkata Sai Manoj',
@@ -327,3 +327,70 @@ export const UNIVERSITY_DATA = {
     }
   ]
 };
+
+export const EDUCATION_DATA: EducationItem[] = [
+  {
+    id: 'edu-1',
+    institution: 'Lovely Professional University',
+    location: 'Phagwara, Punjab',
+    degree: 'B.Tech CSE',
+    period: 'Aug 2024 - Jul 2028',
+    grade: 'Current CGPA: 7.45',
+    description: 'Pursuing Bachelor of Technology in Computer Science & Engineering with an emphasis on AI, Machine Learning, and scalable data intelligence systems.',
+    highlights: ['Focus: AI & Data Science Engineering', 'Relevant: Data Structures, Algorithms, Neural Networks', 'Hands-on laboratory research and project development'],
+    iconName: 'GraduationCap'
+  },
+  {
+    id: 'edu-2',
+    institution: 'Matrusri Junior College',
+    location: 'Rajahmundry, AP',
+    degree: 'Intermediate',
+    period: 'Apr 2022 - Mar 2024',
+    grade: '86.8%',
+    description: 'Completed senior secondary education under Andhra Pradesh State Board with distinction in Mathematics, Physics, and Chemistry (MPC).',
+    highlights: ['Board of Intermediate Education (AP)', 'Rigorous grounding in differential calculus and linear systems', 'Consistent distinction in quantitative sciences'],
+    iconName: 'BookOpen'
+  },
+  {
+    id: 'edu-3',
+    institution: 'Sri Chaitanya School (AP Board)',
+    location: 'Visakhapatnam, AP',
+    degree: 'Matriculation',
+    period: 'Apr 2021 - Mar 2022',
+    grade: '94.7%',
+    description: 'Completed secondary school certificate (SSC) with top academic distinction under the Andhra Pradesh Board of Secondary Education.',
+    highlights: ['Andhra Pradesh Secondary School Certificate (SSC)', 'Outstanding achievement: 94.7% academic score', 'Foundation in mathematics, sciences, and analytical problem-solving'],
+    iconName: 'Award'
+  }
+];
+
+export const SOFT_SKILLS_DATA: SoftSkillItem[] = [
+  {
+    id: 'soft-1',
+    name: 'Problem-Solving',
+    description: 'Structured analytical thinking to decompose complex engineering roadblocks, debug neural architectures, and design optimal algorithmic solutions.',
+    iconName: 'Puzzle',
+    traits: ['Root-Cause Analysis', 'Algorithmic Thinking', 'Pipeline Debugging', 'First-Principles Reasoning']
+  },
+  {
+    id: 'soft-2',
+    name: 'Teamwork',
+    description: 'Collaborative development in cross-functional squads, active participation in peer code reviews, and shared ownership of software deliverables.',
+    iconName: 'Users',
+    traits: ['Agile Collaboration', 'Peer Code Reviews', 'Knowledge Sharing', 'Cross-Functional Sync']
+  },
+  {
+    id: 'soft-3',
+    name: 'Communication',
+    description: 'Articulating intricate machine learning concepts, model architectures, and data insights clearly to both technical engineers and business stakeholders.',
+    iconName: 'MessageSquare',
+    traits: ['Technical Documentation', 'Insight Storytelling', 'Active Listening', 'Stakeholder Alignment']
+  },
+  {
+    id: 'soft-4',
+    name: 'Adaptability',
+    description: 'Quickly absorbing emerging AI frameworks, pivoting across diverse toolchains, and thriving in fast-paced research and deployment environments.',
+    iconName: 'Compass',
+    traits: ['Rapid Tech Uptake', 'Continuous Learning', 'Agile Mindset', 'Resilience under Ambiguity']
+  }
+];

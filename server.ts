@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 const MANOJ_KNOWLEDGE_BASE = `
 You are "JARVIS", Manoj's dedicated personal portfolio AI assistant and Technical AI Representative for Peri Naga Venkata Sai Manoj.
@@ -273,6 +273,14 @@ async function startServer() {
   const app = express();
   app.use(express.json());
 
+  // Prevent browser caching during live development so preview always gets fresh assets
+  app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+  });
+
   // API Health Check
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
@@ -339,7 +347,7 @@ async function startServer() {
                 topP: 0.85,
               },
             }),
-            3000
+            8000
           );
           if (response.text && response.text.trim()) {
             reply = response.text;

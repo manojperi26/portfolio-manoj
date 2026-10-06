@@ -68,3 +68,23 @@ export interface UniversityTab {
     }[];
   };
 }
+
+export interface EducationItem {
+  id: string;
+  institution: string;
+  location: string;
+  degree: string;
+  period: string;
+  grade?: string;
+  description?: string;
+  highlights?: string[];
+  iconName?: string;
+}
+
+export interface SoftSkillItem {
+  id: string;
+  name: string;
+  description: string;
+  iconName: string;
+  traits: string[];
+}

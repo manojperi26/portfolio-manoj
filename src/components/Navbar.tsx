@@ -19,9 +19,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const navLinks = [
     { href: '#hero', label: 'Home' },
     { href: '#skills', label: 'Skills' },
+    { href: '#soft-skills', label: 'Soft Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#certifications', label: 'Certifications' },
     { href: '#internships', label: 'Internships' },
+    { href: '#education', label: 'Education' },
     { href: '#resume', label: 'Resume' },
   ];
 
@@ -115,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main Navigation"
-            className="hidden lg:flex items-center gap-1 bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-md px-2 py-1 border border-[#E2E8F0] dark:border-[#1E293B]"
+            className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-md px-1.5 xl:px-2 py-1 border border-[#E2E8F0] dark:border-[#1E293B]"
           >
             {navLinks.map((link, idx) => {
               const isActive = activeSection === link.href.substring(1);
@@ -124,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`group relative px-3 py-1 text-xs font-mono tracking-tight transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E05638] ${
+                  className={`group relative px-2 xl:px-2.5 py-1 text-[11px] xl:text-xs font-mono tracking-tight transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E05638] ${
                     isActive
                       ? 'bg-[#0F172A] dark:bg-[#F1F5F9] text-[#F1F5F9] dark:text-[#0F172A] font-bold'
                       : 'text-slate-600 dark:text-slate-300 hover:text-[#E05638] dark:hover:text-[#E05638] hover:bg-slate-100/60 dark:hover:bg-[#1E293B]/60'
