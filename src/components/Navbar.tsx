@@ -19,7 +19,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const navLinks = [
     { href: '#hero', label: 'Home' },
     { href: '#skills', label: 'Skills' },
-    { href: '#soft-skills', label: 'Soft Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#certifications', label: 'Certifications' },
     { href: '#internships', label: 'Internships' },

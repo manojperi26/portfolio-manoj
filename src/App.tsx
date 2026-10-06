@@ -3,7 +3,6 @@ import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SkillsSection } from './components/SkillsSection';
-import { SoftSkillsSection } from './components/SoftSkillsSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { CertificationsSection } from './components/CertificationsSection';
 import { InternshipsSection } from './components/InternshipsSection';
@@ -39,7 +38,6 @@ function AppContent() {
           onOpenEmail={() => setEmailModalOpen(true)}
         />
         <SkillsSection />
-        <SoftSkillsSection />
         <ProjectsSection />
         <CertificationsSection />
         <InternshipsSection />

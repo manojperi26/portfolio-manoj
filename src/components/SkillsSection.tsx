@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Terminal, Brain, Bot, Eye, Server, BarChart3, CheckCircle2, Sparkles } from 'lucide-react';
+import { Terminal, Brain, Bot, Eye, Server, BarChart3, CheckCircle2, Sparkles, Puzzle, Users, MessageSquare, Compass } from 'lucide-react';
 import { SKILLS_DATA } from '../data/portfolioData';
 import { SectionFade } from './SectionFade';
 import { SpotlightCard } from './SpotlightCard';
@@ -15,6 +15,10 @@ export const SkillsSection: React.FC = () => {
       case 'Eye': return <Eye className="w-5 h-5 text-[#E05638]" />;
       case 'Server': return <Server className="w-5 h-5 text-[#E05638]" />;
       case 'BarChart3': return <BarChart3 className="w-5 h-5 text-[#E05638]" />;
+      case 'Puzzle': return <Puzzle className="w-5 h-5 text-[#E05638]" />;
+      case 'Users': return <Users className="w-5 h-5 text-[#E05638]" />;
+      case 'MessageSquare': return <MessageSquare className="w-5 h-5 text-[#E05638]" />;
+      case 'Compass': return <Compass className="w-5 h-5 text-[#E05638]" />;
       default: return <Sparkles className="w-5 h-5 text-[#E05638]" />;
     }
   };
@@ -34,10 +38,10 @@ export const SkillsSection: React.FC = () => {
             <span className="text-slate-400">CORE COMPETENCIES</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0F172A] dark:text-[#F1F5F9] tracking-tight mb-3">
-            Technical Methodology &amp; Stack
+            Technical Stack &amp; Soft Skills
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed font-sans">
-            Specialized in mathematical foundations, deep learning frameworks, and scalable data intelligence pipelines.
+            Specialized in mathematical foundations, deep learning frameworks, scalable data intelligence pipelines, and essential collaborative interpersonal strengths.
           </p>
 
           {/* Filter Tabs in Monospace Hairline Style */}
@@ -47,6 +51,7 @@ export const SkillsSection: React.FC = () => {
               { id: 'ai-ml', label: '[AI & DEEP LEARNING]' },
               { id: 'languages', label: '[LANGUAGES & BACKEND]' },
               { id: 'vision-analytics', label: '[VISION & ANALYTICS]' },
+              { id: 'soft-skills', label: '[SOFT SKILLS]' },
             ].map(tab => (
               <button
                 key={tab.id}
@@ -68,7 +73,7 @@ export const SkillsSection: React.FC = () => {
           {filteredSkills.map((skill, index) => {
             const stampNumber = (index + 1).toString().padStart(2, '0');
             return (
-              <SectionFade key={skill.name} delay={index * 0.05}>
+              <SectionFade key={skill.name} delay={index * 0.04}>
                 <SpotlightCard
                   className="h-full bg-white dark:bg-[#0F172A] p-6 border border-[#E2E8F0] dark:border-[#1E293B] hover:border-[#E05638] dark:hover:border-[#E05638] transition-colors flex flex-col justify-between group"
                 >
@@ -77,9 +82,16 @@ export const SkillsSection: React.FC = () => {
                       <div className="p-2 bg-slate-50 dark:bg-[#0B0F17] border border-[#E2E8F0] dark:border-[#1E293B] group-hover:border-[#E05638] transition-colors">
                         {getIcon(skill.iconName)}
                       </div>
-                      <span className="font-mono text-xs text-slate-400 dark:text-slate-500">
-                        [SKL-{stampNumber}]
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        {skill.category === 'soft-skills' && (
+                          <span className="font-mono text-[10px] text-[#E05638] font-bold px-1.5 py-0.5 bg-slate-100 dark:bg-[#0B0F17] border border-[#E05638]/30">
+                            [SOFT SKILL]
+                          </span>
+                        )}
+                        <span className="font-mono text-xs text-slate-400 dark:text-slate-500">
+                          [SKL-{stampNumber}]
+                        </span>
+                      </div>
                     </div>
 
                     <h3 className="font-serif font-bold text-lg text-[#0F172A] dark:text-[#F1F5F9] mb-2 group-hover:text-[#E05638] transition-colors">
@@ -93,7 +105,7 @@ export const SkillsSection: React.FC = () => {
                   {skill.technologies && (
                     <div className="pt-3 border-t border-[#E2E8F0] dark:border-[#1E293B]">
                       <div className="font-mono text-[10px] text-slate-400 dark:text-slate-500 mb-2 uppercase">
-                        SPECIFIED ARTIFACTS:
+                        {skill.category === 'soft-skills' ? 'CORE ATTRIBUTES:' : 'SPECIFIED ARTIFACTS:'}
                       </div>
                       <div className="flex flex-wrap gap-1.5 font-mono text-[11px]">
                         {skill.technologies.map(tech => (

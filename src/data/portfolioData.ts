@@ -68,6 +68,38 @@ export const SKILLS_DATA: SkillItem[] = [
     category: 'vision-analytics',
     level: 'Proficient',
     technologies: ['Power BI', 'Excel']
+  },
+  {
+    name: 'Problem-Solving',
+    description: 'Decomposing complex engineering roadblocks, debugging neural architectures, and designing optimal algorithmic solutions.',
+    iconName: 'Puzzle',
+    category: 'soft-skills',
+    level: 'Core Strength',
+    technologies: ['Root-Cause Analysis', 'Algorithmic Thinking', 'Pipeline Debugging', 'First-Principles Reasoning']
+  },
+  {
+    name: 'Teamwork',
+    description: 'Collaborative development in cross-functional squads, active participation in peer code reviews, and shared ownership of software deliverables.',
+    iconName: 'Users',
+    category: 'soft-skills',
+    level: 'Core Strength',
+    technologies: ['Agile Collaboration', 'Peer Code Reviews', 'Knowledge Sharing', 'Cross-Functional Sync']
+  },
+  {
+    name: 'Communication',
+    description: 'Articulating intricate machine learning concepts, model architectures, and data insights clearly to both technical engineers and business stakeholders.',
+    iconName: 'MessageSquare',
+    category: 'soft-skills',
+    level: 'Core Strength',
+    technologies: ['Technical Documentation', 'Insight Storytelling', 'Active Listening', 'Stakeholder Alignment']
+  },
+  {
+    name: 'Adaptability',
+    description: 'Quickly absorbing emerging AI frameworks, pivoting across diverse toolchains, and thriving in fast-paced research and deployment environments.',
+    iconName: 'Compass',
+    category: 'soft-skills',
+    level: 'Core Strength',
+    technologies: ['Rapid Tech Uptake', 'Continuous Learning', 'Agile Mindset', 'Resilience under Ambiguity']
   }
 ];
 
